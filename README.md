@@ -3,4 +3,5 @@
 Technical Foundation
 
 Frontend: Next.js, React
+
 Backend: Rails

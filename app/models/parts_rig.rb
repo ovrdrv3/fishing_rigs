@@ -1,0 +1,2 @@
+class PartsRig < ApplicationRecord
+end

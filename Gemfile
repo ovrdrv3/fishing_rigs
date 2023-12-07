@@ -65,3 +65,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "webpacker", "~> 5.4"
+
+gem "rubocop", "~> 1.58"
+gem "rspec", "~> 3.12"
+
+gem "shakapacker", "~> 7.1"
+
+gem "react_on_rails", "~> 13.4"

@@ -74,3 +74,5 @@ gem 'rubocop', '~> 1.58'
 gem 'shakapacker', '7.1.0'
 
 gem 'react_on_rails', '13.4'
+
+gem "tailwindcss-rails", "~> 2.1"

@@ -11,7 +11,7 @@ import { Bars3Icon, ChevronRightIcon, ChevronUpDownIcon, MagnifyingGlassIcon } f
 import Logo from './Logo'
 
 const navigation = [
-  { name: 'Fishing Rigs', href: '#', icon: CircleStackIcon, current: true },
+  { name: 'Fishing Rigs', href: '#', icon: CircleStackIcon, current: true, new_url: '/rigs/new'},
   { name: 'Gear Reccomendations', href: '#', icon: ShoppingCartIcon, current: false },
   { name: 'Activity', href: '#', icon: SignalIcon, current: false },
   { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: false },
@@ -150,20 +150,22 @@ export default function Home() {
                 <li>
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-400 dark:bg-gray-800 text-white'
-                              : 'text-gray-400 hover:text-white hover:bg-gray-400 dark:hover:bg-gray-800',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                          )}
-                        >
-                          <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
-                          {item.name}
-                        </a>
-                      </li>
+                      <>
+                        <li key={item.name}>
+                          <a
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? 'bg-gray-400 dark:bg-gray-800 text-white'
+                                : 'text-gray-400 hover:text-white hover:bg-gray-400 dark:hover:bg-gray-800',
+                              'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                            )}
+                          >
+                            <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
+                            {item.name}
+                          </a>
+                        </li>
+                      </>
                     ))}
                   </ul>
                 </li>

@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_212406) do
   end
 
   create_table "fishing_components", force: :cascade do |t|
-    t.string "name"
     t.string "part_type"
     t.integer "part_id"
     t.datetime "created_at", null: false

@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# rm ./.overmind.sock if it exists
+File.delete "./.overmind.sock" if File.exist? "./.overmind.sock"
+
 def installed?(process)
   IO.popen "#{process} -v"
 rescue Errno::ENOENT

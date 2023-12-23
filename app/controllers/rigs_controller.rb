@@ -2,7 +2,7 @@
 
 class RigsController < ApplicationController
   def index
-    @hello_world_props = { name: 'Stranger' }
+    @recent_activity = FishingComponent.recent_activity
   end
 
   def new; end

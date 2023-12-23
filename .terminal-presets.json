@@ -1,0 +1,29 @@
+{
+  "presets": [
+    {
+      "name": "Platform",
+      "terminals": [
+        {
+          "icon": "server",
+          "name": "Foreman",
+          "color": "green",
+          "shellPath": "/bin/zsh",
+          "command": "bin/dev"
+        },
+        {
+          "icon": "ruby",
+          "name": "Rails console",
+          "color": "red",
+          "shellPath": "/bin/zsh",
+          "command": "be rails c"
+        },
+        {
+          "icon": "git-branch",
+          "name": "Git",
+          "color": "cyan",
+          "shellPath": "/bin/zsh"
+        }
+      ]
+    }
+  ]
+}

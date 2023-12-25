@@ -12,7 +12,8 @@ import Logo from './Logo'
 import RecentActivity from './RecentActivity'
 
 const navigation = [
-  { name: 'Fishing Rigs', href: '#', icon: CircleStackIcon, current: true, new_url: '/rigs/new'},
+  { name: 'Fishing Rigs', icon: CircleStackIcon, current: true, href: '/rigs/new'},
+  { name: 'Rig Parts', icon: CircleStackIcon, current: true, href: '/fishing_components/new'},
   { name: 'Gear Reccomendations', href: '#', icon: ShoppingCartIcon, current: false },
   { name: 'Activity', href: '#', icon: SignalIcon, current: false },
   { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: false },

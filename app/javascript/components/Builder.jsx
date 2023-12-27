@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import BobberForm from './BobberForm';
-import SinkerForm from './SinkerForm';
+import React, { useState } from "react";
+import FishingComponentForm from "./FishingComponentForm";
 
-const part_types = ['bobber', 'sinker'];
+const part_types = ["bobber", "sinker"];
 
 const Builder = ({ part, errors }) => {
   const [selectedPart, setSelectedPart] = useState(part || part_types[0]);
@@ -14,7 +13,7 @@ const Builder = ({ part, errors }) => {
         <select
           className="w-48"
           value={selectedPart}
-          onChange={e => setSelectedPart(e.target.value)}
+          onChange={(e) => setSelectedPart(e.target.value)}
         >
           {part_types.map((part_type, index) => (
             <option key={index} value={part_type}>
@@ -27,12 +26,24 @@ const Builder = ({ part, errors }) => {
       <br />
       <p>Your selected part: {selectedPart}</p>
 
-      {/* Conditional rendering based on selectedPart */}
-      {selectedPart === 'bobber' && <BobberForm errors={errors} />}
-      {selectedPart === 'sinker' && <SinkerForm errors={errors} />}
+      {selectedPart === "bobber" && (
+        <FishingComponentForm
+          errors={errors}
+          fieldNames={["name", "color"]}
+          photos={true}
+          partType="bobber"
+        />
+      )}
+      {selectedPart === "sinker" && (
+        <FishingComponentForm
+          errors={errors}
+          fieldNames={["name", "weight"]}
+          photos={true}
+          partType="sinker"
+        />
+      )}
     </div>
   );
-}
-
+};
 
 export default Builder;

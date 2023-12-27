@@ -19,7 +19,12 @@ export default function RecentActivity({ activity }) {
               )}
               <a href={`/fishing_component/{activity.id}`}>
                 <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold leading-6 text-white">
+                  <p className="text-sm font-semibold leading-6 dark:text-white">
+                    {activity.part_name}
+                  </p>
+                </div>
+                <div className="min-w-0 flex-auto">
+                  <p className="text-sm leading-6 dark:text-white">
                     {activity.name}
                   </p>
                 </div>

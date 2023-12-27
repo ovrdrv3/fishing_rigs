@@ -15,6 +15,10 @@ class FishingComponentsController < ApplicationController
     end
   end
 
+  def index
+    @fishing_components = FishingComponent.all
+  end
+
   private
 
   def fishing_components_params

@@ -124,7 +124,6 @@ export default function Home({ activity }) {
                       </button>
                     </div>
                   </Transition.Child>
-                  {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
                       <Logo />
@@ -134,23 +133,35 @@ export default function Home({ activity }) {
                         <li>
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
-                              <li key={item.name}>
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    item.current
-                                      ? "dark:bg-gray-800 text-white"
-                                      : "text-gray-400 hover:text-white dark:hover:bg-gray-800",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                                  )}
-                                >
-                                  <item.icon
-                                    className="h-6 w-6 shrink-0"
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
-                              </li>
+                              <>
+                                <li key={item.name}>
+                                  <div className="flex">
+                                    <a
+                                      href={item.href}
+                                      className={classNames(
+                                        item.current
+                                          ? "bg-gray-400 dark:bg-gray-800 text-white"
+                                          : "text-gray-400 hover:text-white hover:bg-gray-400 dark:hover:bg-gray-800",
+                                        "flex-1 group flex justify-between gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                                      )}
+                                    >
+                                      <div className="flex gap-x-3">
+                                        <item.icon
+                                          className="h-6 w-6 shrink-0"
+                                          aria-hidden="true"
+                                        />
+                                        {item.name}
+                                      </div>
+                                      <a
+                                        href={`${item.href}/new`}
+                                        className="flex-none"
+                                      >
+                                        <PlusIcon className="h-6 w-6 shrink-0" />
+                                      </a>
+                                    </a>
+                                  </div>
+                                </li>
+                              </>
                             ))}
                           </ul>
                         </li>
@@ -179,7 +190,6 @@ export default function Home({ activity }) {
 
         {/* Static sidebar for desktop */}
         <div className="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-72 xl:flex-col">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 ring-1 ring-white/5">
             <Logo />
             <nav className="flex flex-1 flex-col">
@@ -264,6 +274,7 @@ export default function Home({ activity }) {
                   />
                 </div>
               </form>
+              here is where the new content would go.
             </div>
           </div>
 
@@ -274,22 +285,6 @@ export default function Home({ activity }) {
               </h1>
             </header>
           </main>
-
-          {/* Activity feed */}
-          <aside className="dark:bg-black/10 lg:fixed lg:bottom-0 lg:right-0 lg:top-16 lg:w-96 lg:overflow-y-auto lg:border-l dark:lg:border-white/5">
-            <header className="flex items-center justify-between border-b dark:border-white/5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-              <h2 className="text-base font-semibold leading-7 dark:text-white">
-                Activity feed
-              </h2>
-              <a
-                href="#"
-                className="text-sm font-semibold leading-6 text-indigo-400"
-              >
-                View all
-              </a>
-            </header>
-            <RecentActivity activity={activity} />
-          </aside>
         </div>
       </div>
     </>

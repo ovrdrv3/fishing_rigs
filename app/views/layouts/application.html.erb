@@ -14,9 +14,10 @@
 
   <body class="h-full">
     <main>
-      <div class="lg:pr-96">
+      <div>
         <%= react_component("Sidebar", props: {'current_url': request.path}, prerender: true) %>
         <div class="xl:pl-72">
+          <%= react_component("SearchHeader", props: {'current_url': request.path}, prerender: true) %>
           <%= yield %>
         </div>
       </div>

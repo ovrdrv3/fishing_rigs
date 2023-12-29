@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FishingComponentsController < ApplicationController
+  layout 'application'
+
   def new; end
 
   def create

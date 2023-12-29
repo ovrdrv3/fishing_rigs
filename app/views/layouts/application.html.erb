@@ -15,10 +15,17 @@
 
   <body class="h-full">
     <main>
-      <div>
+      <div class="lg:pr-96">
         <%= react_component("Sidebar", prerender: false) %>
-        <%= yield %>
+        <div class="xl:pl-72">
+          <header class="flex items-center justify-between border-b dark:border-white/5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+            <h1 class="text-base font-semibold leading-7 dark:text-white">
+              Fishing Rigs
+            </h1>
+          </header>
+          <%= yield %>
         </div>
+      </div>
     </main>
   </body>
 </html>

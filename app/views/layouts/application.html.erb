@@ -15,7 +15,10 @@
 
   <body class="h-full">
     <main>
-      <%= yield %>
+      <div>
+        <%= react_component("Sidebar", prerender: false) %>
+        <%= yield %>
+        </div>
     </main>
   </body>
 </html>

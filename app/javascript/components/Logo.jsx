@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import LogoHook from '../../assets/images/Logo_Hook.svg';
-import LogoNormal from '../../assets/images/Logo_Normal.svg';
+import React, { useState } from "react";
+import LogoHook from "../../assets/images/Logo_Hook.svg";
+import LogoNormal from "../../assets/images/Logo_Normal.svg";
 
 export default function Logo() {
   const [logo, setLogo] = useState(LogoNormal);
 
   const handleMouseOver = () => {
+    console.log("mouse over");
     setLogo(LogoHook);
   };
 
@@ -15,7 +16,11 @@ export default function Logo() {
 
   return (
     <a href="/">
-      <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex justify-center items-center dark:invert cursor-pointer">
+      <div
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        className="flex justify-center items-center dark:invert cursor-pointer"
+      >
         <img className="p-2" src={logo} alt="Logo" />
       </div>
     </a>

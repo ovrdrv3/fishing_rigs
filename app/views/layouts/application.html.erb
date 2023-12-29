@@ -10,19 +10,13 @@
     <%= javascript_pack_tag 'react-components-bundle' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body class="h-full">
     <main>
       <div class="lg:pr-96">
-        <%= react_component("Sidebar", prerender: false) %>
+        <%= react_component("Sidebar", props: {'current_url': request.path}, prerender: true) %>
         <div class="xl:pl-72">
-          <header class="flex items-center justify-between border-b dark:border-white/5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-            <h1 class="text-base font-semibold leading-7 dark:text-white">
-              Fishing Rigs
-            </h1>
-          </header>
           <%= yield %>
         </div>
       </div>

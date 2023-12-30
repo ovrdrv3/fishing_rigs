@@ -83,7 +83,7 @@ export default function Sidebar({ current_url }) {
         <MobileOnlyDiv className="xl:hidden">
           <button
             type="button"
-            className="-m-2.5 p-2.5 text-gray-300 dark:text-white"
+            className="-m-2.5 p-2.5"
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>

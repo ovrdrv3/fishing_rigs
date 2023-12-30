@@ -65,8 +65,8 @@ const FishingComponentForm = ({ errors, fieldNames, photos, partType }) => {
         <input type="hidden" name="part" value={partType} />
 
         {fieldNames.map((fieldName) => (
-          <div key={fieldName} className="mb-4">
-            <label className="block text-sm font-medium leading-6 text-gray-900">
+          <div key={fieldName} className="mb-4 w-96">
+            <label className="block text-sm font-medium leading-6 dark:text-white text-gray-900">
               {fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}:
               <input
                 type="text"
@@ -94,7 +94,7 @@ const FishingComponentForm = ({ errors, fieldNames, photos, partType }) => {
             <button
               onClick={triggerFileInput}
               type="button"
-              className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold dark:text-gray-100 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-500"
             >
               Add Images
             </button>
@@ -125,7 +125,7 @@ const FishingComponentForm = ({ errors, fieldNames, photos, partType }) => {
         <button
           type="submit"
           disabled={isSubmittedSuccessfully}
-          className={`rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+          className={`rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 ${
             isSubmittedSuccessfully
               ? "bg-green-500"
               : "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"

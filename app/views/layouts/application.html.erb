@@ -10,12 +10,17 @@
     <%= javascript_pack_tag 'react-components-bundle' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body class="h-full">
     <main>
-      <%= yield %>
+      <div>
+        <%= react_component("Sidebar", props: {'current_url': request.path}, prerender: true) %>
+        <div class="xl:pl-72">
+          <%= react_component("SearchHeader", props: {'current_url': request.path}, prerender: true) %>
+          <%= yield %>
+        </div>
+      </div>
     </main>
   </body>
 </html>

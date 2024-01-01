@@ -5,7 +5,7 @@
       "terminals": [
         {
           "icon": "server",
-          "name": "Foreman",
+          "name": "bin/dev",
           "color": "green",
           "shellPath": "/bin/zsh",
           "command": "bin/dev"

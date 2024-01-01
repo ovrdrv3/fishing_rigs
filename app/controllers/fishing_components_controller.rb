@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FishingComponentsController < ApplicationController
+  layout 'application'
+
   def new; end
 
   def create
@@ -13,6 +15,10 @@ class FishingComponentsController < ApplicationController
       @errors = @new_part.errors if @new_part.errors.any?
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @fishing_components = FishingComponent.all
   end
 
   private

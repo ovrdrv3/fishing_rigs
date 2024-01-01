@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_220823) do
 
   create_table "rigs", force: :cascade do |t|
     t.string "name"
-    t.text "fishing_components_ids"
+    t.text "fishing_component_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

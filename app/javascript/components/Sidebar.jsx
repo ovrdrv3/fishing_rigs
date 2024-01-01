@@ -17,23 +17,20 @@ const navigation = [
   {
     name: "Fishing Rigs",
     icon: CircleStackIcon,
-    current: false,
     href: "/rigs",
   },
   {
     name: "Rig Parts",
     icon: CircleStackIcon,
-    current: false,
     href: "/fishing_components",
   },
   {
     name: "Gear",
-    href: "#",
     icon: ShoppingCartIcon,
-    current: false,
+    href: "#",
   },
-  { name: "Activity", href: "#", icon: SignalIcon, current: false },
-  { name: "Settings", href: "#", icon: Cog6ToothIcon, current: false },
+  { name: "Activity", href: "#", icon: SignalIcon },
+  { name: "Settings", href: "#", icon: Cog6ToothIcon },
 ];
 
 function classNames(...classes) {

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Rig < ApplicationRecord
-  serialize :fishing_components_ids, JSON
+  serialize :fishing_component_ids, JSON
 
   def parts
-    fishing_components_ids.map do |id|
+    ids = JSON.parse(fishing_component_ids)
+    ids.map do |id|
       FishingComponent.find(id).part
     end
   end

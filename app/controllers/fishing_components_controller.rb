@@ -21,6 +21,14 @@ class FishingComponentsController < ApplicationController
     @fishing_components = FishingComponent.all
   end
 
+  def json
+    # @fishing_components = FishingComponent.all with images
+    @fishing_components = FishingComponent.all.map do |fishing_component|
+      fishing_component.as_json.merge(images: fishing_component.part.images.map { |image| url_for(image) })
+    end
+    render json: @fishing_components
+  end
+
   private
 
   def fishing_components_params

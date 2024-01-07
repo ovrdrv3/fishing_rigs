@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   root 'rigs#index'
   resources :rigs, only: %i(index new create)
   resources :fishing_components, only: %i(index new create)
+  get :fishing_components_json, to: 'fishing_components#json'
 end

@@ -93,6 +93,7 @@ const RigBuilder = ({ part, errors }) => {
         <div>
           {filteredComponents.map((component, index) => (
             <button
+              type="button"
               key={index}
               onClick={() => addComponent(component)}
               className="m-5 p-5 bg-gray-200 text-gray-800 dark:text-white dark:bg-gray-800 rounded block"

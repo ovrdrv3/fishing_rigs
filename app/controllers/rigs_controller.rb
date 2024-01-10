@@ -3,6 +3,7 @@
 class RigsController < ApplicationController
   def index
     @recent_activity = FishingComponent.recent_activity
+    @rigs = Rig.all
   end
 
   def new; end
@@ -19,6 +20,6 @@ class RigsController < ApplicationController
   private
 
   def rig_params
-    params.permit(:name, component_ids: [])
+    params.require(:rig).permit(:name, fishing_component_ids: [])
   end
 end

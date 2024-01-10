@@ -54,7 +54,7 @@ const RigBuilder = ({ part, errors }) => {
       const postData = {
         rig: {
           name: rigName,
-          component_ids: selectedComponentIds,
+          fishing_component_ids: selectedComponentIds,
         },
       };
       const response = await axios.post("/rigs", postData, {

@@ -22,10 +22,19 @@
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="text-sm text-gray-900 dark:text-gray-100"><%= rig.name %></div>
           </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900 dark:text-gray-100">
-                <%= rig.parts.map(&:name).join(", ") %>
-            </div>
+          <td class="flex px-6 py-4 whitespace-nowrap">
+          <% rig.parts.map do |part|  %>
+            <% if part.images.first.present? %>
+              <img
+                class="h-6 w-6 flex-none rounded-full bg-gray-800"
+                src=<%= part.images.first.url %>
+                alt=""
+                />
+          <% end %>
+          <% end %>
+          <div class="pl-4 text-sm text-gray-900 dark:text-gray-100">
+              <%= rig.parts.map(&:name).join(", ") %>
+          </div>
           </td>
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="text-sm text-gray-900 dark:text-gray-100"><%= rig.created_at.strftime("%B %d") %></div>

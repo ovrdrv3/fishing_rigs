@@ -76,6 +76,9 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  Rails.application.routes.default_url_options = { host: 'http://localhost:3000' }
+  config.after_initialize do
+    ActiveStorage::Current.url_options = { protocol: 'http', host: 'localhost', port: 3000 }
+    ActiveStorage::SetCurrent
+  end
   config.active_storage.routes_prefix = '/rails/active_storage'
 end

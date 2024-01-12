@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'rigs#index'
-  resources :rigs, only: %i(index new create)
+  resources :rigs, only: %i(index edit new create show)
   resources :fishing_components, only: %i(index new create)
   get :fishing_components_json, to: 'fishing_components#json'
 end

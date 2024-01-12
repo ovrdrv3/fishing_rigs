@@ -126,7 +126,7 @@ const RigBuilder = ({ part, errors }) => {
 
         {submitSuccess && newRigId && (
           <a
-            href={`/rig/${newRigId}`}
+            href={`/rigs/${newRigId}`}
             className="m-2 p-2 bg-gray-500 text-white rounded block w-full text-center"
           >
             Go to New Rig

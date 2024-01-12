@@ -1,0 +1,16 @@
+<% @rig.parts.map do |part|  %>
+    <h2 class="text-2xl font-bold dark:text-white">
+        <%= part.name %>
+    </h2>
+    <% if part.images.present? %>
+        <% part.images.map do |image|  %>
+            <img
+            class="h-12 w-12 flex-none rounded-full bg-gray-800"
+            src=<%= image.url %>
+            alt=""
+            />
+        <% end %>
+    <% end %>
+<% end %>
+
+<%= link_to "Edit", edit_rig_path(@rig), class: "dark:text-white" %>

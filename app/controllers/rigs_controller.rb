@@ -17,6 +17,16 @@ class RigsController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def show
+    # TODO: This is a hack to get the images to show up in the view. I need to figure out how to get the images to show up in the view without this hack.
+    ActiveStorage::Current.url_options = { host: 'localhost:3000' }
+    @rig = Rig.find(params[:id])
+  end
+
+  def edit
+    @rig = Rig.find(params[:id])
+  end
+
   private
 
   def rig_params

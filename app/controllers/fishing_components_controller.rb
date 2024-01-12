@@ -32,6 +32,6 @@ class FishingComponentsController < ApplicationController
   private
 
   def fishing_components_params
-    params.permit(:part, :name, :color, :weight, images: [])
+    params.permit(:part, :name, :color, :weight, :size, images: [])
   end
 end

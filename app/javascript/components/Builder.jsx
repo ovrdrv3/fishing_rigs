@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FishingComponentForm from "./FishingComponentForm";
 
-const part_types = ["bobber", "sinker"];
+const part_types = ["bobber", "sinker", "hook"];
 
 const Builder = ({ part, errors }) => {
   const [selectedPart, setSelectedPart] = useState(part || part_types[0]);
@@ -37,6 +37,14 @@ const Builder = ({ part, errors }) => {
           fieldNames={["name", "weight"]}
           photos={true}
           partType="sinker"
+        />
+      )}
+      {selectedPart === "hook" && (
+        <FishingComponentForm
+          errors={errors}
+          fieldNames={["name", "size"]}
+          photos={true}
+          partType="hook"
         />
       )}
     </div>

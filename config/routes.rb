@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :hooks
   get 'hello_world', to: 'hello_world#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

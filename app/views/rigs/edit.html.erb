@@ -1,4 +1,4 @@
 <h1 class="p-5 border-b border-gray-200 dark:border-gray-700 text-base font-semibold leading-7 dark:text-white">
   Edit <%= @rig.name %>
 </h1>
-<%= react_component("RigBuilder", prerender: false) %>
+<%= react_component("RigBuilder", props: { rig: @rig }, prerender: false) %>

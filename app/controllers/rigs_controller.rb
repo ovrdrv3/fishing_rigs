@@ -27,6 +27,16 @@ class RigsController < ApplicationController
     @rig = Rig.find(params[:id])
   end
 
+  def update
+    @rig = Rig.find(params[:id])
+
+    if @rig.update(rig_params)
+      render json: { id: @rig.id }, status: :ok
+    else
+      render json: { errors: @rig.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def rig_params

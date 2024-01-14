@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const RigBuilder = ({ part, errors }) => {
+const RigBuilder = ({ rig = null, errors }) => {
+  const isEditMode = rig !== null;
+  const initialComponentIds = isEditMode ? rig.fishing_component_ids : [];
+
   const [fishingComponents, setFishingComponents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedComponentIds, setSelectedComponentIds] = useState([]);
-  const [rigName, setRigName] = useState("");
+  const [selectedComponentIds, setSelectedComponentIds] =
+    useState(initialComponentIds);
+  const [rigName, setRigName] = useState(isEditMode ? rig.name : "");
   const [selectedComponents, setSelectedComponents] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [newRigId, setNewRigId] = useState(null);
+  const [rigId, setrigId] = useState(isEditMode ? rig.id : null);
 
   useEffect(() => {
     const fetchFishingComponents = async () => {
       try {
         const response = await axios.get("/fishing_components_json");
         setFishingComponents(response.data);
+
+        if (isEditMode) {
+          // Filter the fetched components to include only those in the rig
+          const componentsToEdit = response.data.filter((component) =>
+            initialComponentIds.includes(component.id)
+          );
+          setSelectedComponents(componentsToEdit);
+        }
       } catch (error) {
         console.error("Error fetching fishing components:", error);
       }
     };
 
     fetchFishingComponents();
-  }, []);
+  }, [isEditMode, initialComponentIds]);
 
   const handleInputChange = (event) => {
     event.preventDefault();
@@ -48,25 +60,35 @@ const RigBuilder = ({ part, errors }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Submitting rig...");
+    const postData = {
+      rig: {
+        name: rigName,
+        fishing_component_ids: selectedComponentIds,
+      },
+    };
 
     try {
-      const postData = {
-        rig: {
-          name: rigName,
-          fishing_component_ids: selectedComponentIds,
-        },
-      };
-      const response = await axios.post("/rigs", postData, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken,
-        },
-      });
+      let response;
+      if (isEditMode) {
+        response = await axios.put(`/rigs/${rig.id}`, postData, {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+          },
+        });
+      } else {
+        console.log("Creating rig...");
+        response = await axios.post("/rigs", postData, {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+          },
+        });
+      }
       setSubmitSuccess(true);
-      setNewRigId(response.data.id); // Assuming the response contains the new rig ID
+      setrigId(response.data.id);
     } catch (error) {
-      console.error("Error creating rig:", error);
+      console.error("Error saving rig:", error);
       setSubmitSuccess(false);
     }
   };
@@ -121,12 +143,18 @@ const RigBuilder = ({ part, errors }) => {
           }`}
           disabled={submitSuccess}
         >
-          {submitSuccess ? "Rig successfully submitted." : "Create Rig"}
+          {submitSuccess
+            ? isEditMode
+              ? "Rig successfully updated."
+              : "Rig successfully submitted."
+            : isEditMode
+            ? "Update Rig"
+            : "Create Rig"}
         </button>
 
-        {submitSuccess && newRigId && (
+        {submitSuccess && rigId && (
           <a
-            href={`/rigs/${newRigId}`}
+            href={`/rigs/${rigId}`}
             className="m-2 p-2 bg-gray-500 text-white rounded block w-full text-center"
           >
             Go to New Rig

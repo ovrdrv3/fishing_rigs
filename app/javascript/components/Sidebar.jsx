@@ -18,11 +18,13 @@ const navigation = [
     name: "Fishing Rigs",
     icon: CircleStackIcon,
     href: "/rigs",
+    new: true,
   },
   {
     name: "Rig Parts",
     icon: CircleStackIcon,
     href: "/fishing_components",
+    new: true,
   },
   {
     name: "Gear",
@@ -63,9 +65,11 @@ function SidebarItem({ item, current_url }) {
           <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
           {item.name}
         </a>
-        <a href={`${item.href}/new`} className="flex-none">
-          <PlusIcon className="h-6 w-6 shrink-0" />
-        </a>
+        {item.new && (
+          <a href={`${item.href}/new`} className="flex-none">
+            <PlusIcon className="h-6 w-6 shrink-0" />
+          </a>
+        )}
       </div>
     </li>
   );

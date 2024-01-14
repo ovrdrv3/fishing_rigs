@@ -18,8 +18,6 @@ class RigsController < ApplicationController
   end
 
   def show
-    # TODO: This is a hack to get the images to show up in the view. I need to figure out how to get the images to show up in the view without this hack.
-    ActiveStorage::Current.url_options = { host: 'localhost:3000' }
     @rig = Rig.find(params[:id])
   end
 

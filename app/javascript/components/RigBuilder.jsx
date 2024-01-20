@@ -21,9 +21,8 @@ const RigBuilder = ({ rig = null, errors }) => {
         setFishingComponents(response.data);
 
         if (isEditMode) {
-          // Filter the fetched components to include only those in the rig
-          const componentsToEdit = response.data.filter((component) =>
-            initialComponentIds.includes(component.id)
+          const componentsToEdit = initialComponentIds.map((id) =>
+            response.data.find((component) => component.id === id)
           );
           setSelectedComponents(componentsToEdit);
         }

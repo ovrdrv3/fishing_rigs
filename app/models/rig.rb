@@ -6,8 +6,13 @@ class Rig < ApplicationRecord
   def parts
     return [] unless fishing_component_ids.present?
 
+    # Preload all FishingComponent records in a single query
+    components = FishingComponent.where(id: fishing_component_ids).includes(:part)
+
+    # Map over the original fishing_component_ids to preserve order and duplicates
     fishing_component_ids.map do |id|
-      FishingComponent.find(id).part
+      component = components.find { |comp| comp.id == id }
+      component&.part
     end
   end
 end

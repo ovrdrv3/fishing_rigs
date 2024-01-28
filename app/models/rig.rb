@@ -2,6 +2,7 @@
 
 class Rig < ApplicationRecord
   serialize :fishing_component_ids, coder: JSON
+  validates :name, presence: true
 
   def parts
     return [] unless fishing_component_ids.present?

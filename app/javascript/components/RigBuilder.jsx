@@ -2,6 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+const DraggableComponent = styled.div.attrs({
+  className: "m-4 p-4 bg-gray-100 rounded cursor-grab",
+})`
+  border: 2px solid transparent; /* Invisible border that will highlight on drag over */
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:hover {
+    background-color: #e2e8f0; /* Tailwind gray-200 */
+  }
+
+  &.drag-over {
+    background-color: #bee3f8; /* Tailwind blue-200 */
+    border-color: #90cdf4; /* Tailwind blue-300 */
+  }
+`;
+
 const RigBuilder = ({ rig = null, errors }) => {
   const isEditMode = rig !== null;
   const initialComponentIds = isEditMode ? rig.fishing_component_ids : [];
@@ -38,22 +54,6 @@ const RigBuilder = ({ rig = null, errors }) => {
   const onDragOver = (event) => {
     event.preventDefault();
   };
-
-  const DraggableComponent = styled.div.attrs({
-    className: "m-4 p-4 bg-gray-100 rounded cursor-grab",
-  })`
-    border: 2px solid transparent; /* Invisible border that will highlight on drag over */
-    transition: background-color 0.2s, border-color 0.2s;
-
-    &:hover {
-      background-color: #e2e8f0; /* Tailwind gray-200 */
-    }
-
-    &.drag-over {
-      background-color: #bee3f8; /* Tailwind blue-200 */
-      border-color: #90cdf4; /* Tailwind blue-300 */
-    }
-  `;
 
   const handleDragEnter = (index) => {
     setDraggingIndex(index);

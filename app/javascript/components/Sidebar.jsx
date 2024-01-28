@@ -75,8 +75,56 @@ function SidebarItem({ item, current_url }) {
   );
 }
 
-export default function Sidebar({ current_url }) {
+const AuthButton = ({ current_user, handleSignOut }) => {
+  if (current_user) {
+    return (
+      <>
+        <ul className="w-full text-gray-400 p-2 text-sm leading-6 font-semibold rounded-md">
+          {current_user.email}
+        </ul>
+        <ul>
+          <button
+            onClick={handleSignOut}
+            className="my-2 w-full text-left text-gray-400 hover:text-white hover:bg-gray-400 dark:hover:bg-gray-800 p-2 text-sm leading-6 font-semibold rounded-md"
+          >
+            Sign Out
+          </button>
+        </ul>
+      </>
+    );
+  } else {
+    return (
+      <ul>
+        <a
+          href="/users/sign_in"
+          className="my-2 w-full text-left text-gray-400 hover:text-white hover:bg-gray-400 dark:hover:bg-gray-800 p-2 text-sm leading-6 font-semibold rounded-md block"
+        >
+          Sign In
+        </a>
+      </ul>
+    );
+  }
+};
+
+export default function Sidebar({ current_url, current_user }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleSignOut = () => {
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    fetch("/users/sign_out", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+    }).then((response) => {
+      if (response.ok) {
+        window.location.href = "/";
+      } else {
+        console.error("Sign out failed");
+      }
+    });
+  };
 
   return (
     <>
@@ -161,6 +209,10 @@ export default function Sidebar({ current_url }) {
                           current_url={current_url}
                         />
                       ))}
+                      <AuthButton
+                        current_user={current_user}
+                        handleSignOut={handleSignOut}
+                      />
                     </ul>
                   </nav>
                 </div>
@@ -183,6 +235,10 @@ export default function Sidebar({ current_url }) {
                 />
               ))}
             </ul>
+            <AuthButton
+              current_user={current_user}
+              handleSignOut={handleSignOut}
+            />
           </nav>
         </div>
       </div>

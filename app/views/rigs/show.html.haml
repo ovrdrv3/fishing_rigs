@@ -1,9 +1,13 @@
-%h1.text-2xl.font-bold.dark:text-white.text-center.py-5
-  = @rig.name
+%div.flex.justify-between.items-center.p-5
+  %h1.text-2xl.font-bold.dark:text-white.text-center.flex-grow
+    = @rig.name
+  = link_to "✏️", edit_rig_path(@rig), class: "dark:text-white"
 - @rig.parts.map do |part|
-  %h2.text-2xl.font-bold.dark:text-white
-    = part.name
-  - if part.images.present?
-    - part.images.map do |image|
-      %img.h-12.w-12.flex-none.rounded-full.bg-gray-800{:src => image.url, :alt => ""}
-= link_to "Edit", edit_rig_path(@rig), class: "dark:text-white"
+  %div.flex.justify-center.items-center
+    %div.border.border-gray-800.p-5.m-5.w-80.rounded-lg
+      %h2.text-2xl.font-bold.dark:text-white
+        = part.name
+      - if part.images.present?
+        - part.images.map do |image|
+          %img.h-12.w-12.flex-none.rounded-full.bg-gray-800{:src => image.url, :alt => ""}
+

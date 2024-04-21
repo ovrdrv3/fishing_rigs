@@ -16,6 +16,6 @@ class FishingComponent < ApplicationRecord
   end
 
   def human_readable_created_at
-    "created #{ActionController::Base.helpers.time_ago_in_words(created_at)} ago"
+    "#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago"
   end
 end

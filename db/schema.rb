@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_21_221044) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_28_062548) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -71,6 +71,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_221044) do
   create_table "sinkers", force: :cascade do |t|
     t.string "name"
     t.string "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.integer "age"
+    t.string "strength"
+    t.string "skill_level"
+    t.string "budget"
+    t.integer "fishing_type"
+    t.string "target_species"
+    t.string "season"
+    t.json "suggested_rod"
+    t.json "suggested_reel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

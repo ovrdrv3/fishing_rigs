@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   resources :rigs, only: %i(index edit new create show update)
+  resources :suggestions, only: %i(index new show edit)
   resources :fishing_components, only: %i(index new create)
   get :fishing_components_json, to: 'fishing_components#json'
 end
